@@ -1,11 +1,12 @@
 CC=g++
 CFLAGS=-g -O3 -Wall -Wextra -static-libstdc++ -static-libgcc -std=gnu++23 
 
-EXECS=main_exe
+SOURCES=$(wildcard *.cpp)
+EXECS=$(patsubst %.cpp,%.exe,$(SOURCES))
 
 all: $(EXECS)
 
-%_exe: %.cpp
+%.exe: %.cpp
 	$(CC) $(CFLAGS) -o $@ $<
 
 clean:
