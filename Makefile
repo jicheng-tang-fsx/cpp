@@ -1,12 +1,12 @@
 CC=g++
 CFLAGS=-g -O3 -Wall -Wextra -static-libstdc++ -static-libgcc -std=gnu++23 
-TARGET=my_exe
-SOURCE=main.cpp
 
-all: $(TARGET)
+EXECS=main_exe
 
-$(TARGET): $(SOURCE)
-	$(CC) $(CFLAGS) -o $@ $^
+all: $(EXECS)
+
+%_exe: %.cpp
+	$(CC) $(CFLAGS) -o $@ $<
 
 clean:
-	rm -f $(TARGET)
+	rm -f $(EXECS)
